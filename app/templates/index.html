@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Itinéraire de voyage => JSON</h1>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <div style="font-size: 1.2em; color: green;">
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    {% endwith %}
+    {% if form.errors %}
+        <div style="font-size: 1.2em; color: red;">
+            <ul>
+                {% for field, errors in form.errors.items() %}
+                    <li>{{ form[field].label }} {{ ', '.join(errors) }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.city_name.label }}<br />
+            {{ form.city_name(size=40) }}
+        </p>
+        <p>
+            {{ form.country_name.label }}<br />
+            {{ form.country_name(size=40) }}
+        </p>
+        <p>
+            {{ form.latitude.label }}<br />
+            {{ form.latitude(size=10) }}
+        </p>
+        <p>
+            {{ form.longitude.label }}<br />
+            {{ form.longitude(size=10) }}
+        </p>
+        <p>
+            {{ form.arrival_date.label }}<br />
+            {{ form.arrival_date() }}
+        </p>
+        <p>
+            {{ form.departure_date.label }}<br />
+            {{ form.departure_date }}
+        </p>
+        <p>
+            <input value="Add destination" type="submit" />
+        </p>
+    </form>
+{% endblock %}

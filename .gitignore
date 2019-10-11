@@ -1,0 +1,12 @@
+# local env files
+.flaskenv
+
+# python related
+*.pyc
+*.pyo
+*.swp
+*.swo
+
+# Logs and databases #
+*.sqlite
+*.sqlite3
